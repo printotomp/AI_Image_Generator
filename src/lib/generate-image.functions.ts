@@ -166,5 +166,5 @@ export const generateImages = createServerFn({ method: "POST" })
       );
     }
 
-    return { images: results.slice(0, 3) };
+    return { images: results };
   });

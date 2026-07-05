@@ -67,7 +67,7 @@ function Index() {
         <header className="mb-8 text-center">
           <h1 className="text-4xl font-bold tracking-tight">AI Image Generator</h1>
           <p className="mt-2 text-muted-foreground">
-            Describe what you want. Get 3 variations. Download any of them.
+            Describe what you want. Browse all matching images. Download any of them.
           </p>
         </header>
 
@@ -115,7 +115,7 @@ function Index() {
 
         <div className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {loading &&
-            [0, 1, 2].map((i) => (
+            Array.from({ length: 6 }, (_, i) => i).map((i) => (
               <div
                 key={i}
                 className="flex aspect-square animate-pulse items-center justify-center rounded-lg border bg-muted"
@@ -125,7 +125,7 @@ function Index() {
             ))}
           {!loading &&
             images.map((img, i) => (
-              <div key={i} className="group overflow-hidden rounded-lg border bg-card shadow-sm">
+              <div key={img.url} className="group overflow-hidden rounded-lg border bg-card shadow-sm">
                 <img src={img.url} alt={`Result ${i + 1}`} className="aspect-square w-full object-cover" />
                 <div className="p-3 space-y-2">
                   <p className="text-xs text-muted-foreground">
@@ -145,7 +145,7 @@ function Index() {
 
         {!loading && images.length === 0 && !error && (
           <p className="mt-16 text-center text-sm text-muted-foreground">
-            Type a prompt and hit Generate to see 3 image variations.
+            Type a prompt and hit Generate to see matching images.
           </p>
         )}
       </div>
