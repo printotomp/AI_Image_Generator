@@ -9,10 +9,13 @@ export const generateImages = createServerFn({ method: "POST" })
     }
     return { prompt: input.prompt.slice(0, 200).trim() };
   })
-  .handler(async ({ data }): Promise<{ images: ImageResult[] }> => {
-    const pexelsKey = process.env.PEXELS_API_KEY;
-    const pixabayKey = process.env.PIXABAY_API_KEY;
-    const unsplashKey = process.env.UNSPLASH_ACCESS_KEY;
+    .handler(async ({ data }): Promise<{ images: ImageResult[] }> => {
+        // Read from process.env (Lovable Cloud / real OS env) with import.meta.env
+        // fallback (local `.env` file loaded by Vite in dev).
+        const env = (import.meta as unknown as { env?: Record<string, string | undefined> }).env ?? {};
+        const pexelsKey = "SxLMLwCX0JwgJ58hHqUNQJvpwyM7sQnIILmcGY9BorVM3sFNBQexjJfO";
+        const pixabayKey = "56550929-c7eb526558089523259627a33";
+      const unsplashKey = "2Nm2TTVUyeH0Ap-I1sH9sh1ql-GkiQFkJG7ieBbMwRc";
 
     const query = encodeURIComponent(data.prompt);
     const results: ImageResult[] = [];
