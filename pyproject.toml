@@ -1,0 +1,13 @@
+[project]
+name = "image-search-poc"
+version = "0.1.0"
+description = "POC: search free image APIs and browse results"
+requires-python = ">=3.11"
+dependencies = [
+    "httpx>=0.28.0",
+    "icecream>=2.2.0",
+    "streamlit>=1.41.0",
+]
+
+[tool.uv]
+package = false
